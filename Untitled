@@ -1,0 +1,13 @@
+SELECT * FROM images
+ORDER BY id DESC
+LIMIT 10;
+
+SELECT * FROM images
+WHERE id < $1
+ORDER BY id DESC
+LIMIT 10;
+
+
+
+<input v-modle="imageToUpload.title" name="title">
+<input v-modle="imageToUpload.desc" name="desc">

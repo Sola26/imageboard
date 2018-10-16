@@ -2,9 +2,40 @@
 <html>
 <head>
     <title></title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+    <div id="main">
+        <input type="text" name="title" v-model="title">
+        <input type="text" name="desc" v-model="desc">
+        <input type="username" name="file" v-model="username">
+        <input type="file" name="file" accept="image/*" @change="handleFileChange">
+        <button @click="upload" name="button">submit</button>
+
+
+
+        <div id="container">
+            <a v-for="item in images" v-bind:href="item.url">
+                <div class="frame">
+                    <img class="pic" v-bind:src="item.url" :alt="item.title">
+
+                    <p class="title">{{item.title}}</p>
+                </div>
+            </a>
+
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+
     <script src="/js/vue.js"></script>
     <script src="/js/axios.min.js"></script>
+    <script src="/js/script.js"></script>
 </body>
 </html>
