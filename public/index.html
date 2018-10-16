@@ -6,27 +6,30 @@
 </head>
 <body>
     <div id="main">
-        <input type="text" name="title" v-model="title">
-        <input type="text" name="desc" v-model="desc">
-        <input type="username" name="file" v-model="username">
-        <input type="file" name="file" accept="image/*" @change="handleFileChange">
-        <button @click="upload" name="button">submit</button>
+            <div class="header">
+        <input placeholder="title" class="title" type="text" name="title" v-model="title">
+        <input placeholder="description" class="description" type="text" name="desc" v-model="desc">
+        <input  class="username" type="username" placeholder="username" name="file" v-model="username">
+        <input class="file" type="file" name="file" placeholder="file" accept="image/*" @change="handleFileChange">
+        <button class="submit" @click="upload" name="button">submit</button>
 
-
+</div>
 
         <div id="container">
             <a v-for="item in images" v-bind:href="item.url">
                 <div class="frame">
                     <img class="pic" v-bind:src="item.url" :alt="item.title">
 
-                    <p class="title">{{item.title}}</p>
+                    <p class="p">{{item.title}}</p>
                 </div>
             </a>
 
 
 
 
-        </div>
+            </div>
+
+
     </div>
 
 
