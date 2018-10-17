@@ -37,20 +37,11 @@ const uploader = multer({
 
 
 
+app.get("/", (req, res) => {
+    res.sendFile("index.html");
 
+});
 
-// app.get('/cities', function(req, res) {
-//     res.json([
-//         {
-//             name: 'Berlin',
-//             country: 'Germany'
-//         },
-//         {
-//             name: 'Hamburg',
-//             country: 'Germany'
-//         }
-//     ]);
-// })
 app.post('/upload', uploader.single('file'), s3.upload, (req, res) => {
     const imgUrl = s3Url.s3Url + req.file.filename
     console.log(req.file.filename);
@@ -61,29 +52,15 @@ app.post('/upload', uploader.single('file'), s3.upload, (req, res) => {
     })
     .catch(err => {console.log(err)});
 });
-        // if (req.file) {
-        //     res.json({
-        //         data: {
-        //             title: "",
-        //             username: "",
-        //             desc: "",
-        //             file: {},
-        //             images: []
-        //         }
-        //     });
-        // } else {
-        //     res.json({
-        //         success: false
-        //     });
-        // }
 
-
-// })
-
-app.get("/", (req, res) => {
-    res.sendFile("index.html");
-
-});
+app.get('/modal/:id', (req, res) => {
+    db.imageAppear(req.params.id).then(result => {
+        console.log('result of get modal/:id', result);
+        res.json(result.rows[0])
+    }).catch(err => {
+        console.log('err: ', err);
+    })
+})
 
 app.get("/api-request", (req, res) => {
     db.getImages().then((images) => {

@@ -18,8 +18,8 @@ a {
 }
 .pic {
     position: relative;
-    width: 600px;
-    height: 400px;
+    width: 800px;
+    height: 600px;
     object-fit: cover;
     /* overflow: hidden; */
     /* padding-top: 10px; */
@@ -44,7 +44,7 @@ a {
 .title {
     position: absolute;
     top: 50%;
-    left: 55%;
+    left: 50%;
     height: 15px;
 
 }
@@ -52,25 +52,25 @@ a {
 .description {
     position: absolute;
     top: 50%;
-    left: 40%;
+    left: 35%;
     height: 15px;
 }
 
 .username {
     position: absolute;
     top: 50%;
-    left: 25%;
+    left: 20%;
     height: 15px;
 }
 .submit {
     position: absolute;
     top: 50%;
-    left: 70%;
+    left: 85%;
     height: 15px;
 }
 .file {
     position: absolute;
     top: 50%;
-    left: 80%;
+    left: 65%;
     height: 15px;
 }

@@ -7,38 +7,51 @@
 <body>
     <div id="main">
             <div class="header">
-        <input placeholder="title" class="title" type="text" name="title" v-model="title">
-        <input placeholder="description" class="description" type="text" name="desc" v-model="desc">
-        <input  class="username" type="username" placeholder="username" name="file" v-model="username">
+                <input  class="username" type="username" placeholder="username" name="file" v-model="username">
+                <input placeholder="description" class="description" type="text" name="desc" v-model="desc">
+                <input placeholder="title" class="title" type="text" name="title" v-model="title">
+
+
         <input class="file" type="file" name="file" placeholder="file" accept="image/*" @change="handleFileChange">
         <button class="submit" @click="upload" name="button">submit</button>
 
 </div>
 
         <div id="container">
-            <a v-for="item in images" v-bind:href="item.url">
+            <a v-for="item in images">
                 <div class="frame">
-                    <img class="pic" v-bind:src="item.url" :alt="item.title">
+                    <img class="pic" :src="item.url" :alt="item.title" @click="popModal(item.id)">
 
                     <p class="p">{{item.title}}</p>
                 </div>
+
             </a>
 
-
-
-
+ <!-- @close="closeModal" -->
             </div>
+            <image-modal v-bind:id="imageId" v-if="imageId" :id="imageId"></image-modal>
+
+</div>
+<!-- @close="closeModal" -->
+<script type="text/x-template" id="image-modal">
+       <div >
+   <p id= "modal">{{image.heading}}</p>
+   <p> {{image.description}} </p>
+   <p> {{image.username}} </p>
+
+       </div>
+   </script>
 
 
     </div>
 
 
 
-
-
-
+    <!-- <script type="text/x-template" id="tmpl"></script> -->
     <script src="/js/vue.js"></script>
     <script src="/js/axios.min.js"></script>
     <script src="/js/script.js"></script>
+
+
 </body>
 </html>

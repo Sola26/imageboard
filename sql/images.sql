@@ -29,3 +29,12 @@ INSERT INTO images (url, username, title, description) VALUES (
     'Hello Berlin',
     'This is going to be worth a lot of money one day.'
 );
+
+
+CREATE TABLE comments(
+    id SERIAL PRIMARY KEY,
+    comment VERCHAR(600) NOT NULL,
+    username VERCHAR(100) NOT NULL,
+    image_id INT NOT NULL REFERENCES image(id),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)

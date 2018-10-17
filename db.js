@@ -9,7 +9,7 @@ const db = spicedPg(dburl);
 
 exports.getImages = function() {
     const q = `
-  SELECT url, title
+  SELECT url, title, id
   FROM images
   `;
 
@@ -22,4 +22,14 @@ exports.uploadImages = function uploadImages(url, title, description, username) 
     `;
     const params = [url|| null, title || null, description || null, username || null];
     return db.query(q, params);
+}
+
+
+exports.imageAppear = function imageApear(id) {
+    const q = `
+    SELECT id, username, title, description, url
+    FROM images
+    WHERE id = $1
+    `;
+    return db.query(q, [id])
 }
