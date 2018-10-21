@@ -1,57 +1,84 @@
-<!doctype html>
-<html>
-<head>
-    <title></title>
-    <link rel="stylesheet" href="./styles.css">
-</head>
-<body>
-    <div id="main">
-            <div class="header">
-                <input  class="username" type="username" placeholder="username" name="file" v-model="username">
-                <input placeholder="description" class="description" type="text" name="desc" v-model="desc">
-                <input placeholder="title" class="title" type="text" name="title" v-model="title">
+        <!doctype html>
+        <html>
+        <head>
+            <title></title>
+            <link rel="stylesheet" href="./styles.css">
+        </head>
+        <body>
+
+            <h1>MY IMAGEBOARD!</h1>
+            <div id="main">
+                    <div class="header">
+                        <input  class="username" type="username" placeholder="username" name="file" v-model="username">
+                        <input placeholder="description" class="description" type="text" name="desc" v-model="desc">
+                        <input placeholder="title" class="title" type="text" name="title" v-model="title">
+                        <input class="file" type="file" name="file" placeholder="file" accept="image/*" @change="handleFileChange">
+                        <button class="submit" @click="upload" name="button">submit</button>
+                        <button class="more" v-if="hasMore" @click="getMore">more</button>
 
 
-        <input class="file" type="file" name="file" placeholder="file" accept="image/*" @change="handleFileChange">
-        <button class="submit" @click="upload" name="button">submit</button>
-
-</div>
-
-        <div id="container">
-            <a v-for="item in images">
-                <div class="frame">
-                    <img class="pic" :src="item.url" :alt="item.title" @click="popModal(item.id)">
-
-                    <p class="p">{{item.title}}</p>
-                </div>
-
-            </a>
-
- <!-- @close="closeModal" -->
-            </div>
-            <image-modal v-bind:id="imageId" v-if="imageId" :id="imageId"></image-modal>
-
-</div>
-<!-- @close="closeModal" -->
-<script type="text/x-template" id="image-modal">
-       <div >
-   <p id= "modal">{{image.heading}}</p>
-   <p> {{image.description}} </p>
-   <p> {{image.username}} </p>
-
-       </div>
-   </script>
+        </div>
 
 
-    </div>
+                <div id="container">
+                    <div v-for="item in images" class="in">
+
+                            <a :href='"#" + item.id'>
+                                <div class="frame"><img class="pic" :src="item.url" :alt="item.title" @click="popModal(item.id)"><p class="p">{{item.title}}</p></div></a>
 
 
 
-    <!-- <script type="text/x-template" id="tmpl"></script> -->
-    <script src="/js/vue.js"></script>
-    <script src="/js/axios.min.js"></script>
-    <script src="/js/script.js"></script>
 
 
-</body>
-</html>
+                    </div>
+
+                                <image-modal @close="closeModal" v-if="imageId" :id="imageId"></image-modal>
+                    </div>
+
+
+        </div>
+
+        <script type="text/x-template" id="image-modal">
+            <div class="modal-wrapper">
+               <div id= "modal" class="modal-mask">
+
+           <p class="title">{{title}}</p>
+           <p> {{description}} </p>
+           <p> {{user}} </p>
+           <button class="close" v-on:click="close">
+                    X
+                  </button>
+                  <!-- <p>{{date}}</p> -->
+
+           <img class="image" :src=url>
+
+
+
+           <p class="add-a-comment">Add a Comment!</p>
+          <input class="input-comment" name="comment" placeholder="type your comment here ..." type="text" v-model="comment">
+          <input class="input-commenter" name="commenter" placeholder="your username" v-model="commenter">
+          <button class="add" @click="addComment">Add Comment</button>
+
+
+              <div v-if="commentsArr.length">
+                  <div class="comment-container" v-for="comment in commentsArr">
+                      <p class="comment-text">{{comment.comment}}</p>
+                      <p>
+                          <span class="commenter">{{comment.username}}</span>
+
+                          <span class="comment-date"><p>created at</p>{{comment.created_at}}</span>
+                      </p>
+
+                  </div>
+              </div>
+               </div>
+               </div>
+           </script>
+
+            <script src="/js/vue.js"></script>
+            <script src="/js/axios.min.js"></script>
+            <script src="/js/script.js"></script>
+
+
+        </body>
+        </html>
