@@ -96,22 +96,15 @@ h1 {
 }
 
 .commenter {
+  color: #9a9e90;
 }
 
 .comment-date {
 }
 
 .comment-container {
-  position: absolute;
-  top: 30%;
-  left: 70%;
-  height: 600px;
-  width: 700px;
-  background-color: white;
-
   color: black;
   font-size: 30px;
-  padding: 4px;
 }
 
 .input-comment {
