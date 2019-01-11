@@ -93,6 +93,24 @@ app.get("/api-request", (req, res) => {
       console.log(err);
     });
 });
+app.post("/delete/:id", (req, res) => {
+  console.log("req params id", req.params);
+  db.deleteComments(req.params.id)
+    .then(result => {
+      console.log("deleteImages result", result);
+      db.deleteImage(req.params.id);
+    })
+    .catch(err => {
+      console.log("error in 1 delete", err.message);
+    })
+    .then(data => {
+      console.log("deleteComments data", data);
+      res.redirect("/");
+    })
+    .catch(err => {
+      console.log("error in post delete", err.message);
+    });
+});
 
 app.get("/images/more/:id", (req, res) => {
   db.getMore(req.params.id)

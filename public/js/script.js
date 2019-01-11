@@ -67,6 +67,19 @@
           .catch(function(err) {
             console.log("COMMENT ERR: ", err.message);
           });
+      },
+      deleteimage: function() {
+        // var its = this;
+        axios
+          .post("/delete/" + this.id)
+          .then(function() {
+            console.log("this.id:", this.id);
+            this.$emit("delete");
+            location.hash = "";
+          })
+          .catch(function(err) {
+            console.log("ERROR in delete image:", err.message);
+          });
       }
     }
   });
@@ -130,6 +143,22 @@
       popModal: function(id) {
         console.log("id: ", id);
         this.imageId = id;
+      },
+      reload: function() {
+        var self = this;
+        addEventListener("hashchange", function() {
+          console.log("LOCATION.HASH :", location.hash);
+          self.imageId = location.hash.slice(1);
+        });
+        axios
+          .get("/image")
+          .then(function(response) {
+            console.log("RESPONSE.DATA reload :", response.data);
+            self.images = response.data;
+          })
+          .catch(function(err) {
+            console.log("ERROR IN AXIOS :", err.message);
+          });
       },
       getMore: function() {
         var self = this;

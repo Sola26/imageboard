@@ -65,20 +65,6 @@ module.exports.saveComment = function(comment, username, image_id) {
   return db.query(q, params);
 };
 
-// exports.getMore = function getMore() {
-//     const q = `
-//     SELECT id, (
-//         SELECT id FROM images
-//         ORDER BY id ASC
-//         LIMIT 1
-//     )
-//     AS last FROM images
-//     WHAER id < 10
-//     ORDER BY id DESC
-//     LIMIT 9
-//     `
-// }
-
 module.exports.getMore = function(id) {
   const q = `
     SELECT *
@@ -89,4 +75,26 @@ module.exports.getMore = function(id) {
     `;
   const params = [id || null];
   return db.query(q, params);
+};
+
+// module.exports.deleteImage = function(id) {
+//   const q = `DELETE FROM images CASCADE WHERE id = $1 RETURNING *`;
+//   const params = [id || null];
+//   return db.query(q, params);
+// };
+
+exports.deleteImage = function(id) {
+  return db
+    .query(`DELETE FROM images CASCADE WHERE id = $1 RETURNING *`, [id])
+    .then(result => {
+      return result.rows[0];
+    });
+};
+
+exports.deleteComments = function(id) {
+  return db
+    .query(`DELETE FROM comments CASCADE WHERE user_id = $1 RETURNING *`, [id])
+    .then(result => {
+      return result.rows[0];
+    });
 };

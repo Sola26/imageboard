@@ -8,13 +8,14 @@
 
             <h1>IMAGE BOARD</h1>
             <div id="main">
+
                     <div class="header">
                         <input  class="username" type="username" placeholder="username" name="file" v-model="username">
                         <input placeholder="description" class="description" type="text" name="desc" v-model="desc">
                         <input placeholder="title" class="title" type="text" name="title" v-model="title">
                         <input class="file" type="file" name="file" placeholder="file" accept="image/*" @change="handleFileChange">
                         <button class="submit" @click="upload" name="button">submit</button>
-                        <button class="more" v-if="hasMore" @click="getMore">more</button>
+
 
 
         </div>
@@ -32,8 +33,13 @@
 
                     </div>
 
+
+                    <button class="more" v-if="hasMore" @click="getMore">more</button>
+
+
                                 <image-modal @close="closeModal" v-if="imageId" :id="imageId"></image-modal>
                     </div>
+
 
 
         </div>
@@ -48,13 +54,14 @@
            <button class="close" v-on:click="close">
                     X
                   </button>
-                  <!-- <p>{{date}}</p> -->
+
 
            <img class="image" :src=url>
 
+           <button id="delete" @click="deleteimage">DELETE IMAGE</button>
 
 
-           <p class="add-a-comment">Add a Comment!</p>
+           <!-- <p class="add-a-comment">Add a Comment!</p> -->
            <input class="input-commenter" name="commenter" placeholder="name" v-model="commenter">
           <input class="input-comment" name="comment" placeholder="type your comment here ..." type="text" v-model="comment">
           <button class="add" @click="addComment">Add Comment</button>
@@ -67,11 +74,13 @@
                           <p class="comment-text">{{comment.comment}}</p>
 
                           <span class="comment-date"><p>created at</p>{{comment.created_at}}</span>
+
                       </p>
 
                   </div>
               </div>
                </div>
+
                </div>
            </script>
 
