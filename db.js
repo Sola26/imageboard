@@ -77,18 +77,10 @@ module.exports.getMore = function(id) {
   return db.query(q, params);
 };
 
-// module.exports.deleteImage = function(id) {
-//   const q = `DELETE FROM images CASCADE WHERE id = $1 RETURNING *`;
-//   const params = [id || null];
-//   return db.query(q, params);
-// };
-
-exports.deleteImage = function(id) {
-  return db
-    .query(`DELETE FROM images CASCADE WHERE id = $1 RETURNING *`, [id])
-    .then(result => {
-      return result.rows[0];
-    });
+module.exports.deleteImage = function(id) {
+  const q = `DELETE FROM images CASCADE WHERE id = $1 RETURNING *`;
+  const params = [id || null];
+  return db.query(q, params);
 };
 
 exports.deleteComments = function(id) {

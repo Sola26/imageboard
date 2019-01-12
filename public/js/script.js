@@ -69,7 +69,6 @@
           });
       },
       deleteimage: function() {
-        // var its = this;
         axios
           .post("/delete/" + this.id)
           .then(function() {
@@ -126,8 +125,6 @@
           .post("/upload", formData)
           .then(function(response) {
             me.images.unshift(response.data[0]);
-
-            // req.file.filename
           })
           .catch(function() {
             if (err) {
@@ -175,25 +172,8 @@
           });
       },
       closeModal: function() {
-        // var s = location.hash.slice(1);
         this.imageId = null;
-        // s = null;
       }
     }
   });
 })();
-
-// if (self.images[self.images.length-1].) {
-//
-// }
-
-// set a property on the click handler of the image
-// value
-
-// axios.post('/comment', {
-//     imageId: this.id,
-//     comment: this.comment,
-//     username: this.username
-// })
-
-// location.hash = "" /the hash
