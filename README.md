@@ -13,4 +13,4 @@ Page to upload, see uploaded pictures and leave comments. Features implemented: 
 
 
 
-![](2019-01-11_15-35-16 (1).gif)
+![](https://github.com/Sola26/imageboard/blob/master/2019-01-11_15-35-16%20(1).gif.gif)
