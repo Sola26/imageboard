@@ -4,12 +4,11 @@ Page to upload, see uploaded pictures and leave comments. Features implemented: 
 
 
 
-<<<<<<< HEAD
 
 
 
 
 
-![2019-01-11_15-35-16 (1)](/Users/macbookpro/Documents/Snagit/Autosaved Captures.localized/2019-01-11_15-35-16 (1).gif)
+
+![2019-01-11_15-35-16 (1)](/Users/macbookpro/Documents/Snagit/Autosaved Captures.localized/2019-01-11_15-35-16 (1).gif) 
 =======
->>>>>>> 009e4514cf1e5d647cf09a3b1e554246ac315bbd
